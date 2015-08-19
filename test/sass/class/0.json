@@ -1,0 +1,122 @@
+{
+  "type": "class",
+  "content": [
+    {
+      "type": "ident",
+      "content": "abc-",
+      "syntax": "sass",
+      "start": {
+        "line": 1,
+        "column": 2
+      },
+      "end": {
+        "line": 1,
+        "column": 5
+      }
+    },
+    {
+      "type": "interpolation",
+      "content": [
+        {
+          "type": "variable",
+          "content": [
+            {
+              "type": "ident",
+              "content": "nani",
+              "syntax": "sass",
+              "start": {
+                "line": 1,
+                "column": 9
+              },
+              "end": {
+                "line": 1,
+                "column": 12
+              }
+            }
+          ],
+          "syntax": "sass",
+          "start": {
+            "line": 1,
+            "column": 8
+          },
+          "end": {
+            "line": 1,
+            "column": 12
+          }
+        }
+      ],
+      "syntax": "sass",
+      "start": {
+        "line": 1,
+        "column": 6
+      },
+      "end": {
+        "line": 1,
+        "column": 13
+      }
+    },
+    {
+      "type": "ident",
+      "content": "_xy",
+      "syntax": "sass",
+      "start": {
+        "line": 1,
+        "column": 14
+      },
+      "end": {
+        "line": 1,
+        "column": 16
+      }
+    },
+    {
+      "type": "interpolation",
+      "content": [
+        {
+          "type": "variable",
+          "content": [
+            {
+              "type": "ident",
+              "content": "panda",
+              "syntax": "sass",
+              "start": {
+                "line": 1,
+                "column": 20
+              },
+              "end": {
+                "line": 1,
+                "column": 24
+              }
+            }
+          ],
+          "syntax": "sass",
+          "start": {
+            "line": 1,
+            "column": 19
+          },
+          "end": {
+            "line": 1,
+            "column": 24
+          }
+        }
+      ],
+      "syntax": "sass",
+      "start": {
+        "line": 1,
+        "column": 17
+      },
+      "end": {
+        "line": 1,
+        "column": 25
+      }
+    }
+  ],
+  "syntax": "sass",
+  "start": {
+    "line": 1,
+    "column": 1
+  },
+  "end": {
+    "line": 1,
+    "column": 25
+  }
+}

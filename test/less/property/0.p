@@ -1,3 +1,0 @@
-['property',
-  ['variable',
-    ['ident', 'nani']]]

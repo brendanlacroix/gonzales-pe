@@ -1,3 +1,0 @@
-['pseudoe',
-  ['interpolatedVariable',
-    ['ident', 'a']]]

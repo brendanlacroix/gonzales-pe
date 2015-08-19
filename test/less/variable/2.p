@@ -1,3 +1,0 @@
-['variable',
-  ['variable',
-    ['ident', 'a']]]

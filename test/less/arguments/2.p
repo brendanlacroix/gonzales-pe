@@ -1,9 +1,0 @@
-['arguments',
-  ['number', '1'],
-  ['delim'],
-  ['s', ' '],
-  ['number', '2'],
-  ['delim'],
-  ['s', ' '],
-  ['number', '3'],
-  ['declDelim']]

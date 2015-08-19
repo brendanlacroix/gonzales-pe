@@ -1,3 +1,0 @@
-['variableslist',
-  ['variable',
-    ['ident', 'colors']]]

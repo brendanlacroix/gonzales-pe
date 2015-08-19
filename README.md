@@ -1,52 +1,217 @@
-Gonzales is a fast CSS parser.    
-Gonzales PE is a rework with support of preprocessors.    
+## API
 
-Currently those are supported: SCSS, Sass, LESS.
+### gonzales.createNode(options)
 
-For a plan of future work see [issue #4](https://github.com/tonyganch/gonzales-pe/issues/4).
+Creates a new node.
 
-## Install
+Parameters:
 
-To install globally:
+* `{{type: String, content: String|Array}} options`
 
-    npm install gonzales-pe@2.0.2 -g
+Returns:
 
-To install as a project dependency:
+* `{Object} node`
 
-    npm install gonzales-pe@2.0.2
+Example:
+```js
+    var css = 'a {color: tomato}';
+    var ast = gonzales.parse(css);
+    var node = gonzales.createNode({ type: 'animal', content: 'panda' });
+    ast.content.push(node);
+```
 
-To install dev branch:
+### gonzales.parse(css, options)
 
-    npm install git://github.com/tonyganch/gonzales-pe.git#dev
+Parse CSS.
 
-To clone from github:
+Parameters:
 
-    git clone git@github.com:tonyganch/gonzales-pe.git
+* `{String} css`
+* `{{syntax: String, rule: String}} options`
 
-## Build
+Returns:
 
-If you installed/cloned the repo from GitHub, make sure to build library files
-first.    
-It can be done by running `make` in the module's root directory.    
-`make` will build both Node.js and web versions (all files are comments-free
-but not compressed).    
-If you need a minified version for production, feel free to use uglifier of
-your choice.
+* `{Object} ast`.
 
-## Use
+Example:
+```js
+    var css = 'a {color: tomato}';
+    var ast = gonzales.parse(css);
+```
 
-Require Gonzales in your project:
+Example:
+```js
+    var less = 'a {$color: tomato}';
+    var ast = gonzales.parse(less, {syntax: 'less'});
+```
 
-    var gonzales = require('gonzales-pe');
+Example:
+```js
+    var less = '$color: tomato';
+    var ast = gonzales.parse(less, {syntax: 'less', rule: 'declaration'});
+```
 
-Do something:
+### ast.contains(type)
 
-    var css = 'a { color: tomato }';
-    console.log(gonzales.cssToAST(css));
+Checks whether there is a child node of given type.
 
-You can learn more about available methods on [Gonzales usage](doc/Gonzales-Usage.md) page.
+Parameters:
 
-AST is described on [Gonzales AST description](doc/AST-Description.md) page.
+* `{String} type`
+
+Returns:
+
+* `{Boolean}`
+
+Example:
+```js
+    if (ast.contains('panda'))
+        doSomething();
+```
+
+### ast.content
+
+### ast.eachFor(type, callback)
+
+### ast.end
+
+### ast.first(type)
+
+Returns the first child node of given type.
+
+Parameters:
+
+* `{String=} type`
+
+Returns:
+
+* `{Node} node`
+
+Example:
+```js
+    var node = ast.first();
+    node.content = 'panda';
+```
+
+Example:
+```js
+    var node = ast.first('commentML');
+    node.content = 'panda';
+```
+
+### ast.forEach(type, function)
+
+Calls the function for every child node of given type.
+
+Parameters:
+
+* `{String=} type`
+* `{Function} function`
+
+Example:
+```js
+    ast.forEach('commentML', function(node) {
+        node.content = 'panda';
+    });
+```
+
+### ast.get(index)
+
+### ast.indexHasChanged
+
+### ast.insert(index, node)
+
+### ast.is(type)
+
+Checks whether the node is of given type.
+
+Parameters:
+
+* `{String} type`
+
+Returns:
+
+* `{Boolean}`
+
+Example:
+```js
+    if (ast.is('s'))
+        ast.content = '';
+```
+
+### ast.last(type)
+
+Returns the last child node of given type.
+
+Parameters:
+
+* `{String=} type`
+
+Returns:
+
+* `{Node} node`
+
+Example:
+```js
+    var node = ast.last()
+    node.content = 'panda';
+```
+
+Example:
+```js
+    var node = ast.last('commentML');
+    node.content = 'panda';
+```
+
+### ast.length
+
+### ast.remove(index)
+
+### ast.start
+
+### ast.syntax
+
+### ast.toJson()
+
+### ast.toString()
+
+Converts AST to code.
+
+Parameters:
+
+* `{String} syntax`
+
+Returns:
+
+* `{String} css`
+
+Example:
+```js
+    var css = ast.toCSS('css');
+    var less = ast.toCSS('less');
+```
+
+### ast.traverse(function)
+
+Calls the function for every node in a tree. Modifies the tree!
+
+Parameters:
+
+* `{Function} function`
+
+Example:
+```js
+    ast.map(function(node) {
+        if (node.type === 'commentML') node.content = 'panda';
+    });
+```
+
+### ast.traverseByType(type, callback)
+
+### ast.traverseByTypes(types, callback)
+
+### ast.type
+
 
 ## Test
 
@@ -73,9 +238,7 @@ If you want to test one specific string or get a general idea of how Gonzales
 works, you can use `test/ast.js` file.    
 Simply change the first two strings (`css` and `syntax` vars) and run:
 
-    node test/ast.js
-
-Please remember to also run `make` every time you modify any source files.
+    node test/single-test.js
 
 ## Report
 

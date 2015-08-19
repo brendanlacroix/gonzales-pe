@@ -1,1 +1,0 @@
-['parentselector', '&']

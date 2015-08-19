@@ -1,2 +1,0 @@
-['placeholder',
-  ['ident', 'nani']]
